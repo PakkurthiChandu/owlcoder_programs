@@ -1,0 +1,61 @@
+package owl3.o;
+import java.util.*;
+public class bitwise_and_between_positions {
+	public static void print_output(int[][] a,int L,int R)
+	{
+		int l=R-L+1,s=0;                      
+		for(int i=0;i<32;i++)
+		{
+			if(L!=0)
+			{
+				if(a[R][i]-a[L-1][i]>=l)          //subtract before rows set count for the right position
+				{
+					s+=1<<(i);
+				}
+			}
+			else                                  //if L==0 there is  no before rows to subtract for right position
+			{
+				if(a[R][i]>=l)
+				{
+					s+=1<<(i);
+				}
+			}
+		}
+		System.out.println(s);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 Scanner sc=new Scanner(System.in);
+		 int n=sc.nextInt(),c=0;
+		 int[] a=new int[n];
+		 for(int i=0;i<n;i++)
+		 {
+			 a[i]=sc.nextInt();
+		 }
+		 int[][] p=new int[n][32];
+		 for(int i=31;i>=0;i--)                //creating a matrix for the sum of set bits at same position
+		 {
+			 c=0;
+			 for(int j=0;j<n;j++)
+			 {
+				 if(((a[j]>>i)&1)==1)
+				 {
+					 c+=1;
+				 }
+				 p[j][i]=c;
+			 }
+		 }
+		 int q=sc.nextInt();                     //number of queries
+		 for(int i=0;i<q;i++)
+		 {
+			 int l=sc.nextInt();                 //left position
+			 int r=sc.nextInt();				 //right position
+			 print_output(p,l,r);
+		 }
+	}
+
+}
+//  we use same method for the bitwise_or but we have atleast one set bit after subtract
+// we use same mthod for the bitwise xor but we have odd number of set bits
+
+
