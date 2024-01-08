@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int s=0;
+    void check(TreeNode* root,int l,int h)
+    {
+        if(root==NULL)
+            return;
+        if(root->val>=l && root->val<=h)s+=root->val;
+        check(root->left,l,h);
+        check(root->right,l,h);
+    }
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        check(root,low,high);
+        return s;
+    }
+};
