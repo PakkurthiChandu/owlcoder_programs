@@ -1,0 +1,11 @@
+package owl_practice;
+import java.util.*;
+public class modules_of_10pow9 {
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		a=a%1000000007;
+		System.out.println((a%1000000007)*(a%(1000000007)));
+	}
+}
