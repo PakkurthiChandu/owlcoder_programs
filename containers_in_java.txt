@@ -1,0 +1,33 @@
+package owl_practice;
+import java.util.*;
+public class queue_check {
+	public static void reverse(Queue<Integer> q)
+	{
+		if(q.isEmpty())
+		{
+			return;
+		}
+		int data=q.peek();
+		q.remove();
+		reverse(q);
+		q.add(data);
+	}
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		Deque<Integer> q=new LinkedList();
+		q.add(1);
+		q.add(2);
+		q.add(3);
+		q.add(4);
+		q.add(5);
+		q.add(6);
+		//Collections.reverse(q);
+		reverse(q);
+		System.out.println(q.removeLast());
+		PriorityQueue<Integer> d=new PriorityQueue<>();
+		d.add(4);
+		d.add(2);
+		System.out.println(d);
+	}
+}
