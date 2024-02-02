@@ -30,21 +30,32 @@ class aToi
 /*You are required to complete this method */
 class Solution
 {
-    int atoi(String str) {
+    int atoi(String s) {
 	// Your code here
-    	int s=0,c=0;
-    	for(int i=0;i<str.length();i++)
-    	{
-    	   if(str.charAt(i)>='0' && str.charAt(i)<='9')
-    	   {
-    	       s=s*10+(str.charAt(i)-48);
-    	       //System.out.println("yes)";
-    	   }
-    	   else if(str.charAt(i)=='-' && i==0)c=1;
-    	   else
-    	   return -1;
-    	}
-    	if(c==1)s=-s;
-    	return s;
+        int ans=0;
+        if(s.charAt(0)=='-' || (s.charAt(0)>='0' && s.charAt(0)<='9'))
+        {
+            if(s.charAt(0)!='-')
+            {
+                for(int i=0;i<s.length();i++)
+                {
+                    if(!(s.charAt(i)>='0' && s.charAt(i)<='9'))return -1;
+                    ans=ans*10+s.charAt(i)-'0';
+                }
+            }
+            else
+            {
+                for(int i=1;i<s.length();i++)
+                {   
+                    if(!(s.charAt(i)>='0' && s.charAt(i)<='9'))return -1;
+                    ans=ans*10+s.charAt(i)-'0';
+                }
+                ans=-ans;
+            }
+        }
+        else{
+            return -1;
+        }
+        return ans;
     }
 }
