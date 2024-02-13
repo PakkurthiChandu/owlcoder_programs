@@ -42,7 +42,8 @@ class Solution {
         al.add(node);
         for(int i=0;i<adj.get(node).size();i++)
         {
-            if(a[adj.get(node).get(i)]==0){
+            if(a[adj.get(node).get(i)]==0)
+            {
                 dfs(adj.get(node).get(i),adj,a,al);
             }
         }
